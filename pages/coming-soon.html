@@ -77,10 +77,6 @@
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 </head>
 <body>
-  <div style="position:fixed;top:var(--space-4);right:var(--space-4);display:flex;gap:var(--space-3);z-index:100;">
-    <button class="rtl-toggle">RTL</button>
-    <button class="theme-toggle">🌙</button>
-  </div>
 
   <main>
     <section class="coming-soon" style="min-height:100vh;background:var(--bg-primary);">
@@ -93,96 +89,35 @@
       <div class="container">
         <div class="cs-content">
           <span class="cs-pony">🐴</span>
+          <span class="badge badge-secondary" style="margin-bottom:var(--space-4);">Trotting Soon</span>
+          <h1 style="font-size:clamp(2.2rem, 5vw, 3.8rem);margin-bottom:var(--space-4);">Something Magical is On the Way</h1>
+          <p style="font-size:1.15rem;max-width:560px;margin:0 auto var(--space-8);">We're galloping fast to bring you a brand-new experience. Sign up below to get notified when we launch!</p>
 
-          <div class="hero-badge" style="display:inline-flex;margin-bottom:var(--space-5);">
-            <i class="fas fa-clock"></i> Something magical is coming
+          <div class="cs-progress">
+            <div class="cs-progress-bar"></div>
           </div>
+          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:var(--space-6);">Launch Progress: 72%</p>
 
-          <h1 style="margin-bottom:var(--space-4);">We're Getting the Ponies Ready!</h1>
-          <p style="font-size:1.05rem;margin-bottom:var(--space-6);">
-            Our brand-new online booking experience is being built with extra love and glitter. Get notified the moment we go live!
-          </p>
-
-          <!-- Progress -->
-          <div style="margin-bottom:var(--space-4);">
-            <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:var(--space-2);">Development Progress</div>
-            <div class="cs-progress">
-              <div class="cs-progress-bar"></div>
-            </div>
-            <div style="font-size:0.85rem;color:var(--primary);font-weight:600;">72% Complete</div>
-          </div>
-
-          <!-- Countdown -->
-          <div class="countdown">
-            <div class="countdown-item">
-              <div class="countdown-num" id="cd-days">00</div>
-              <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-num" id="cd-hours">00</div>
-              <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-num" id="cd-mins">00</div>
-              <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-num" id="cd-secs">00</div>
-              <div class="countdown-label">Seconds</div>
-            </div>
-          </div>
-
-          <!-- Notify form -->
-          <h4 style="margin-top:var(--space-8);margin-bottom:var(--space-2);">Notify Me When We Launch</h4>
-          <p style="font-size:0.9rem;color:var(--text-muted);">Be first to book and get 10% off your first visit!</p>
-          <form class="cs-notify-form" data-form="notify" novalidate>
-            <input type="email" id="cs-email" placeholder="your@email.com" data-validate="required|email">
-            <span class="form-error" data-error="cs-email"></span>
-            <button type="submit" class="btn btn-primary btn-lg">
-              <i class="fas fa-bell"></i> Notify Me
-            </button>
+          <!-- Notification Form -->
+          <form class="cs-notify-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you when we launch.');">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address for launch notification">
+            <button type="submit" class="btn btn-primary btn-lg">Notify Me 🚀</button>
           </form>
 
           <!-- Socials -->
-          <p style="margin-top:var(--space-8);font-size:0.9rem;color:var(--text-muted);">Follow our ponies in the meantime</p>
           <div class="cs-socials">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="btn-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="btn-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
 
-          <div style="margin-top:var(--space-8);">
-            <a href="../index.html" style="color:var(--text-muted);font-size:0.9rem;transition:color var(--transition-base);">
-              <i class="fas fa-arrow-left"></i> Back to main site
-            </a>
-          </div>
+          <p style="margin-top:var(--space-10);font-size:0.85rem;"><a href="../index.html" style="color:var(--primary);font-weight:600;">← Back to Main Site</a></p>
         </div>
       </div>
     </section>
   </main>
 
   <script src="../assets/js/main.js"></script>
-  <script>
-    // Custom countdown for coming-soon page
-    const target = new Date();
-    target.setDate(target.getDate() + 45);
-    const tick = () => {
-      const now = new Date();
-      const diff = target - now;
-      if (diff <= 0) return;
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-      document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-      document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
-    };
-    tick();
-    setInterval(tick, 1000);
-  </script>
 </body>
 </html>
-
